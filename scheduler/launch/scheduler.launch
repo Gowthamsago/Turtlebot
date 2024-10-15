@@ -1,0 +1,18 @@
+<launch>
+<!-- Arguments -->
+<arg name="x" default="6.33"/>
+<arg name="y" default="-4.00"/>
+<arg name="z" default="-0.01"/>
+<arg name="w" default="0.99"/>
+
+
+<!-- Camera Node -->
+<node pkg="qr_code_tracker" name="qr_code_tracker" type="main.py"/>
+ 
+<!-- SLAM Navigation -->
+<include file="$(find navigation)/launch/navigation.launch"/>
+ 
+<!-- Main Node -->
+<node pkg="scheduler" name="scheduler_node" type="main.py" args="$(arg x) $(arg y) $(arg z) $(arg w)"/>
+
+</launch>
